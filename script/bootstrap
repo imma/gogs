@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local url_gogs_Darwin="https://cdn.gogs.io/gogs_v${GOGS_VERSION}_darwin_amd64.zip"
+  local url_gogs_Linux="https://cdn.gogs.io/gogs_v${GOGS_VERSION}_linux_amd64.zip"
+
+  local url_gogs="url_gogs_$(uname -s)"
+  local fnm_gogs="$(basename "${!url_gogs}")"
+  cache curl "$fnm_gogs" "${!url_gogs}"
+
+  mkdir -p "$shome/vendor/gogs-${GOGS_VERSION}"
+  pushd "$shome/vendor/gogs-${GOGS_VERSION}"
+  unzip -o "${BASEBOX_CACHE}/curl/$fnm_gogs"
+  popd
+
+  pushd "$shome/bin"
+  ln -nfs ../vendor/gogs-${GOGS_VERSION}/gogs/gogs .
+  popd
+
+}
+
+bootstrap

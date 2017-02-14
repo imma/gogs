@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function _gogs_profile {
+  local shome="${_gogs_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  PATH="$shome/bin:$PATH"
+
+  GOGS_VERSION="0.9.141"
+}
+
+_gogs_profile
