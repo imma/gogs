@@ -3,7 +3,7 @@
 function _gogs_profile {
   local shome="${_gogs_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
 
-  GOGS_VERSION="0.9.141"
+  GOGS_VERSION="0.10.1"
 
   PATH="$shome/vendor/gogs-${GOGS_VERSION}/gogs:$PATH"
 }
