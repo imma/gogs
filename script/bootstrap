@@ -4,11 +4,11 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local url_gogs_Darwin="https://cdn.gogs.io/gogs_v${GOGS_VERSION}_darwin_amd64.zip"
-  local url_gogs_Linux="https://cdn.gogs.io/gogs_v${GOGS_VERSION}_linux_amd64.zip"
+  local url_gogs_Darwin="https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/darwin_amd64.zip"
+  local url_gogs_Linux="https://github.com/gogits/gogs/releases/download/v${GOGS_VERSION}/linux_amd64.zip"
 
   local url_gogs="url_gogs_$(uname -s)"
-  local fnm_gogs="$(basename "${!url_gogs}")"
+  local fnm_gogs="$(basename "${!url_gogs}")-${GOGS_VERSION}"
   cache curl "$fnm_gogs" "${!url_gogs}"
 
   mkdir -p "$shome/vendor/gogs-${GOGS_VERSION}"
