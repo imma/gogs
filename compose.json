@@ -9,6 +9,9 @@
   },
   "services": {
     "gogs": {
+      "environment": [
+        "SERVICE_2222_NAME=ssh"
+      ],
       "volumes": [
         "/data:/data",
         "/config:/config"
