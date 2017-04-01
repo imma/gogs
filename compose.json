@@ -31,7 +31,7 @@
           "ipv4_address": "${NET_PREFIX}.9"
         }
       },
-      "dns_search": "node.consul",
+      "dns_search": "node.dc1.consul",
       "image": "${BLOCK_REGISTRY}/block:gogs",
       "hostname": "gogs"
     }
